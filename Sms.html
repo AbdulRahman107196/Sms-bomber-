@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAGE INTEL // TERMINAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --primary-glow: rgba(0, 243, 255, 0.5);
+            --bg-dark: #000000;
+            --bg-gradient: #040d1a;
+            --card-bg: rgba(6, 6, 10, 0.95);
+            --border: rgba(0, 243, 255, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: radial-gradient(circle at center, var(--bg-gradient) 0%, var(--bg-dark) 100%);
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* الیکٹرک گرڈ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 440px;
+            background: var(--card-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border);
+            border-radius: 45px;
+            padding: 50px 35px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.9), 0 0 20px rgba(0, 243, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* لوگو اب سب سے اوپر ہے */
+        .logo-area {
+            position: relative;
+            width: 125px; height: 125px;
+            margin-bottom: 25px;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--primary), transparent);
+            border-radius: 35px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .logo-area img {
+            width: 100%; height: 100%;
+            border-radius: 31px;
+            object-fit: cover;
+            background: #000;
+        }
+
+        /* ٹیکسٹ اب لوگو کے نیچے ہے */
+        .header-content {
+            margin-bottom: 35px;
+        }
+
+        .brand-name {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: #ffffff;
+            text-shadow: 0 0 25px var(--primary-glow);
+            text-transform: uppercase;
+        }
+
+        .input-box {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 0.65rem;
+            color: #445566;
+            margin-bottom: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #1a2233;
+            border-radius: 20px;
+            padding: 22px;
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-family: monospace;
+            text-align: center;
+            outline: none;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-field:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.1);
+            background: rgba(0, 243, 255, 0.02);
+        }
+
+        .btn-start {
+            width: 100%;
+            padding: 22px;
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-bottom: 15px;
+        }
+
+        .btn-start:hover {
+            background: var(--primary);
+            box-shadow: 0 0 50px var(--primary-glow);
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .tg-btn {
+            background: rgba(0, 136, 204, 0.08);
+            color: #0088cc;
+            border-color: rgba(0, 136, 204, 0.2);
+        }
+
+        .tg-btn:hover { background: rgba(0, 136, 204, 0.15); border-color: #0088cc; }
+
+        .wa-btn {
+            background: rgba(37, 211, 102, 0.08);
+            color: #25d366;
+            border-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .wa-btn:hover { background: rgba(37, 211, 102, 0.15); border-color: #25d366; }
+
+        .footer-status {
+            margin-top: 35px;
+            font-size: 0.6rem;
+            color: #334455;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: monospace;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="logo-area">
+            <img src="https://i.ibb.co/ynkQSQdS/13455.jpg" alt="KAGE INTEL">
+        </div>
+
+        <div class="header-content">
+            <h1 class="brand-name">KAGE INTEL</h1>
+        </div>
+        
+        <div class="input-box">
+            <label>[ SECURE_TARGET_ID ]</label>
+            <input type="tel" class="input-field" id="target" placeholder="923XXXXXXXXX">
+        </div>
+
+        <button class="btn-start" id="run">START NOW</button>
+
+        <div class="social-links">
+            <a href="https://t.me/kageintelhq" target="_blank" class="social-btn tg-btn">
+                TELEGRAM
+            </a>
+            <a href="https://chat.whatsapp.com/JG21gHyUBmiAxabdJTfrNI" target="_blank" class="social-btn wa-btn">
+                WHATSAPP
+            </a>
+        </div>
+
+        <div class="footer-status">
+            SYSTEM ONLINE // SECURE SESSION
+        </div>
+    </div>
+
+    <script>
+        const API = { url: 'https://fak-sms-boomber.jokerkeep057.workers.dev/', key: '32563' };
+        const btn = document.getElementById('run');
+        const input = document.getElementById('target');
+
+        btn.addEventListener('click', async () => {
+            const val = input.value.trim();
+            if(val.length < 10) return alert("INVALID_IDENTIFIER");
+
+            btn.disabled = true;
+            btn.innerHTML = "STARTING...";
+            
+            try {
+                await fetch(`${API.url}?key=${API.key}&number=${val}&count=30`);
+                alert("PROTOCOL_EXECUTED: SUCCESS");
+            } catch(e) {
+                alert("CONNECTION_FAILED");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = "START NOW";
+            }
+        });
+    </script>
+</body>
+</html>
+
